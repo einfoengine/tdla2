@@ -91,6 +91,7 @@ const Login: React.FC = () => {
           // logo={<img alt="logo" src="/logo.svg" />}
           title="Tour de lankawi"
           // subTitle={intl.formatMessage({ id: 'pages.layouts.userLayout.title' })}
+          // check
           initialValues={{
             autoLogin: true,
           }}
