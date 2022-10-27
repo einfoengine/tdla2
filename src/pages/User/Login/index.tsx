@@ -2,12 +2,12 @@ import Footer from '@/components/Footer';
 import { login } from '@/services/ant-design-pro/api';
 import { getFakeCaptcha } from '@/services/ant-design-pro/login';
 import {
-  AlipayCircleOutlined,
+  // AlipayCircleOutlined,
   LockOutlined,
   MobileOutlined,
-  TaobaoCircleOutlined,
+  // TaobaoCircleOutlined,
   UserOutlined,
-  WeiboCircleOutlined,
+  // WeiboCircleOutlined,
 } from '@ant-design/icons';
 import {
   LoginForm,
@@ -45,6 +45,7 @@ const Login: React.FC = () => {
   const fetchUserInfo = async () => {
     const userInfo = await initialState?.fetchUserInfo?.();
     if (userInfo) {
+      console.log(userInfo);
       await setInitialState((s) => ({
         ...s,
         currentUser: userInfo,
@@ -59,7 +60,7 @@ const Login: React.FC = () => {
       if (msg.status === 'ok') {
         const defaultLoginSuccessMessage = intl.formatMessage({
           id: 'pages.login.success',
-          defaultMessage: '登录成功！',
+          defaultMessage: 'Login successful',
         });
         message.success(defaultLoginSuccessMessage);
         await fetchUserInfo();
@@ -67,7 +68,7 @@ const Login: React.FC = () => {
         history.push(urlParams.get('redirect') || '/');
         return;
       }
-      console.log(msg);
+      console.log('-->>  ',msg);
       // 如果失败去设置用户错误信息
       setUserLoginState(msg);
     } catch (error) {
@@ -93,7 +94,7 @@ const Login: React.FC = () => {
           // subTitle={intl.formatMessage({ id: 'pages.layouts.userLayout.title' })}
           // check
           initialValues={{
-            autoLogin: true,
+            autoLogin: false,
           }}
           // actions={[
             // <FormattedMessage
@@ -106,6 +107,7 @@ const Login: React.FC = () => {
             // <WeiboCircleOutlined key="WeiboCircleOutlined" className={styles.icon} />,
           // ]}
           onFinish={async (values) => {
+            console.log('--->>> ', values);
             await handleSubmit(values as API.LoginParams);
           }}
         >
@@ -149,7 +151,7 @@ const Login: React.FC = () => {
                 }}
                 placeholder={intl.formatMessage({
                   id: 'pages.login.username.placeholder',
-                  defaultMessage: '用户名: admin or user',
+                  defaultMessage: 'Admin login only',
                 })}
                 rules={[
                   {
@@ -157,7 +159,7 @@ const Login: React.FC = () => {
                     message: (
                       <FormattedMessage
                         id="pages.login.username.required"
-                        defaultMessage="请输入用户名!"
+                        defaultMessage="Required field"
                       />
                     ),
                   },
@@ -171,7 +173,7 @@ const Login: React.FC = () => {
                 }}
                 placeholder={intl.formatMessage({
                   id: 'pages.login.password.placeholder',
-                  defaultMessage: '密码: ant.design',
+                  defaultMessage: 'Required field',
                 })}
                 rules={[
                   {
@@ -188,8 +190,8 @@ const Login: React.FC = () => {
             </>
           )}
 
-          {status === 'error' && loginType === 'mobile' && <LoginMessage content="验证码错误" />}
-          {type === 'mobile' && (
+          {/* {status === 'error' && loginType === 'mobile' && <LoginMessage content="验证码错误" />} */}
+          {/* {type === 'mobile' && (
             <>
               <ProFormText
                 fieldProps={{
@@ -269,21 +271,21 @@ const Login: React.FC = () => {
                 }}
               />
             </>
-          )}
+          )} */}
           <div
             style={{
               marginBottom: 24,
             }}
           >
             <ProFormCheckbox noStyle name="autoLogin">
-              <FormattedMessage id="pages.login.rememberMe" defaultMessage="自动登录" />
+              <FormattedMessage id="pages.login.rememberMe" defaultMessage="Remember me" />
             </ProFormCheckbox>
             <a
               style={{
                 float: 'right',
               }}
             >
-              <FormattedMessage id="pages.login.forgotPassword" defaultMessage="忘记密码" />
+              <FormattedMessage id="pages.login.forgotPassword" defaultMessage="Reset Password" />
             </a>
           </div>
         </LoginForm>

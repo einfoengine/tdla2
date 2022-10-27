@@ -21,14 +21,25 @@ export async function outLogin(options?: { [key: string]: any }) {
 }
 
 /** 登录接口 POST /api/login/account */
+// export async function login(body: API.LoginParams, options?: { [key: string]: any }) {
+//   return request<API.LoginResult>('/api/login/account', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     data: body,
+//     ...(options || {}),
+//   });
+// }
 export async function login(body: API.LoginParams, options?: { [key: string]: any }) {
-  return request<API.LoginResult>('/api/login/account', {
+  console.log('options -> ', body);
+  return request<API.LoginResult>('https://tdltest.emenem.tech/api/v1/auth/login/', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    data: body,
-    ...(options || {}),
+    // headers: {
+    //   'Content-Type': 'application/json',
+    // },
+    data: body
+    // ...(options || {}),
   });
 }
 
