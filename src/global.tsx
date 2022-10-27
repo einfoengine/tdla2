@@ -9,7 +9,7 @@ const clearCache = () => {
   // remove all caches
   if (window.caches) {
     caches
-      .keys()
+      .keys()``
       .then((keys) => {
         keys.forEach((key) => {
           caches.delete(key);

@@ -1,4 +1,4 @@
-import { GithubOutlined } from '@ant-design/icons';
+// import { GithubOutlined } from '@ant-design/icons';
 import { DefaultFooter } from '@ant-design/pro-components';
 import { useIntl } from '@umijs/max';
 
@@ -19,23 +19,25 @@ const Footer: React.FC = () => {
       copyright={`${currentYear} ${defaultMessage}`}
       links={[
         {
-          key: 'Tour de lankawi',
+          key: 'Tour de lankawi. All rights reserved.',
           title: 'Tour de lankawi',
-          href: 'https://pro.ant.design',
+          href: 'https://www.techtsy.com',
           blankTarget: true,
         },
         {
-          key: 'github',
-          title: <GithubOutlined />,
-          href: 'https://github.com/ant-design/ant-design-pro',
+          key: 'techtsy',
+          title: ()=>{
+            return <a href='https://techtsy.com'>techtsy.com</a>
+          },
+          href: 'techtsy.com',
           blankTarget: true,
         },
-        {
-          key: 'Ant Design',
-          title: 'Ant Design',
-          href: 'https://ant.design',
-          blankTarget: true,
-        },
+        // {
+        //   key: 'Ant Design',
+        //   title: 'Ant Design',
+        //   href: 'https://ant.design',
+        //   blankTarget: true,
+        // },
       ]}
     />
   );
